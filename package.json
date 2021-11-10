@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "aplikasi konsentrasi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gunawan2800/restapi.git"
+  },
+  "keywords": [
+    "restapi"
+  ],
+  "author": "guna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gunawan2800/restapi/issues"
+  },
+  "homepage": "https://github.com/gunawan2800/restapi#readme"
+}
