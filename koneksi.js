@@ -6,4 +6,12 @@ const conn=mysql.createConnection({
     user:'root',
     password:'',
     database:''
-})
+});
+conn.connect((err)=>{
+    if(err) throw err;
+    console.log('mysql terkoneksi');
+});
+
+module.exports.conn;
+
+
