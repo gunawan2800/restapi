@@ -43,8 +43,26 @@ exports.tambahdatasiswa=function(req,res){
         if(error){
             console.log(error)
         }else{
-            response.ok("DATA MASUK!",res)
+            response.ok('BERHASIL MENAMBAH DATA!',res)
         }
     }
+    )
+}
+
+// mengubah data berdasarkan id
+exports.editsiswa=function(req,res){
+    var id=req.body.id_siswa;
+    var nama=req.body.nama;
+    var nis=req.body.nis;
+    var kelas=req.body.kelas;
+
+    connection.query(`UPDATE siswa SET nama=?, nis=?, kelas=? WHERE id_siswa=? `,[nama,nis,kelas,id],
+        function(error,row,fields){
+            if(error){
+                console.log(error);
+            }else{
+                response.ok("BERHASIL EDIT DATA!",res)
+            }
+        }
     )
 }

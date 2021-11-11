@@ -11,4 +11,6 @@ module.exports=function(app){
         .get(json.tampilid);
     app.route('/kirim')
         .post(json.tambahdatasiswa);
+    app.route('/ubah')
+        .put(json.editsiswa);
 }
