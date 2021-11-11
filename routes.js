@@ -5,4 +5,6 @@ module.exports=function(app){
 
     app.route('/')
         .get(json.index);
+    app.route('/tampil')
+        .get(json.tampilsemuasiswa);
 }
