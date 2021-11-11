@@ -24,9 +24,26 @@ exports.tampilid=function(req,res){
     connection.query(`SELECT * FROM siswa WHERE id_siswa=?`,[id],
     function(error,row,fileds){
         if(error){
-            connection.log(error)
+            console.log(error)
         }else{
             response.ok(row,res)
+        }
+    }
+    )
+}
+
+// menambah data siswa
+exports.tambahdatasiswa=function(req,res){
+    var nama=req.body.nama;
+    var nis=req.body.nis;
+    var kelas=req.body.kelas;
+
+    connection.query(`INSERT INTO siswa (nama,nis,kelas) VALUES(?,?,?)`,[nama,nis,kelas],
+    function(error,row,fields){
+        if(error){
+            console.log(error)
+        }else{
+            response.ok("DATA MASUK!",res)
         }
     }
     )

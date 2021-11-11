@@ -9,4 +9,6 @@ module.exports=function(app){
         .get(json.tampilsemuasiswa);
     app.route('/tampil/:id')
         .get(json.tampilid);
+    app.route('/kirim')
+        .post(json.tambahdatasiswa);
 }
