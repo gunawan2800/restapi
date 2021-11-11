@@ -66,3 +66,17 @@ exports.editsiswa=function(req,res){
         }
     )
 }
+
+// hapus data siswa berdasarkan id
+exports.hapusdatasiswa=function(req,res){
+     var id=req.body.id_siswa;
+     connection.query(`DELETE FROM siswa WHERE id_siswa=?`,[id],
+     function(error,row,fields){
+         if(error){
+             console.log(error)
+         }else{
+             response.ok('DATA BERHASIL DIHAPUS!',res)
+         }
+     }
+     )
+}

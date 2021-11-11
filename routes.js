@@ -13,4 +13,6 @@ module.exports=function(app){
         .post(json.tambahdatasiswa);
     app.route('/ubah')
         .put(json.editsiswa);
+    app.route('/hapus')
+        .delete(json.hapusdatasiswa);
 }
