@@ -8,7 +8,7 @@ exports.index=function(req,res){
 
 // menampilkan  semua data siswa
 exports.tampilsemuasiswa=function(req,res){
-        connection.query(`SELECT * FROM siswa`,function(error,row,fileds){
+    connection.query(`SELECT * FROM siswa`,function(error,row,fileds){
             if(error){
                 connection.log(error)
             }

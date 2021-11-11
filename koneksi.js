@@ -1,4 +1,4 @@
- var mysql=require(`mysql`);
+ var mysql=require('mysql');
 
 //  buat koneksi ke db
 const conn=mysql.createConnection({
@@ -12,6 +12,6 @@ conn.connect((err)=>{
     console.log('mysql terkoneksi');
 });
 
-module.exports.conn;
+module.exports=conn;
 
 
