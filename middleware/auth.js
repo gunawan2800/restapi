@@ -12,7 +12,7 @@ exports.registrasi=function(req,res){
     var post={
         username:req.body.username,
         email:req.body.email,
-        passwod:md5(req.body.passwod),
+        password:md5(req.body.password),
         role:req.body.role,
         tanggal_daftar:new Date()
     }
@@ -21,15 +21,16 @@ exports.registrasi=function(req,res){
             console.log(error);
         }else{
             if(rows.length==0){
-                connection.query(`INSERT INTO user SET ??`,post,function(erroe,rows){
+                connection.query(`INSERT INTO user (username,email,password,role,tanggal_daftar) VALUES(?,?,?,?,?)`,[post.username,post.email,post.password,post.role,post.tanggal_daftar],function(erroe,rows){
                     if(error){
                         console.log(error);
                     }else{
                         response.ok("berhasil menambah data user",res);
+                        console.log(post)
                     }
                 })
             }else{
-                response.ok("email sudah ada!!!")
+                response.ok("email sudah ada!!!",res)
             }
         }
     })
