@@ -6,6 +6,7 @@ var jwt=require('jsonwebtoken')
 var config=require('../config/secret')
 var ip=require('ip');
 const { query } = require('express');
+// var respon=require('../res');
 
 // controller u/ registrasi
 exports.registrasi=function(req,res){
@@ -35,4 +36,47 @@ exports.registrasi=function(req,res){
         }
     })
     
+}
+
+// kontroller untuk login
+exports.login=function(req,res){
+    var post={
+        password:req.body.password,
+        email:req.body.email
+    }
+    connection.query("SELECT*FROM user WHERE password=? AND email=?",[md5(post.password),post.email],
+    function(error,rows){
+        if(error){
+            console.log(error)
+        }else{
+            if(rows.length==1){
+                var token=jwt.sign({rows},config.secret,{
+                    expiresIn:1440
+                })
+                var id_user=rows[0].id;
+                var data={
+                    id_user:id_user,
+                    access_token:token,
+                    ip_address:ip.address()
+                }
+                connection.query("INSERT INTO akses_token (id_user,access_token,ip_address) VALUES(?,?,?)",[data.id_user,data.access_token,data.ip_address],
+                function(error,rows){
+                    if(error){
+                        console.log(error)
+                    }else{
+                        res.json({
+                            success:true,
+                            message:'token jwt tergenarate',
+                            token:token,
+                            currUser:data.id_user
+                        })
+                        }
+                    }
+                );
+            }else{
+                res.json({error:true,
+                message:"email/pass salah"})
+            }
+        }
+    });
 }
