@@ -66,7 +66,7 @@ exports.login=function(req,res){
                     }else{
                         res.json({
                             success:true,
-                            message:'token jwt tergenarate',
+                            message:'BERHASIL  token jwt tergenarate',
                             token:token,
                             currUser:data.id_user
                         })
@@ -79,4 +79,9 @@ exports.login=function(req,res){
             }
         }
     });
+}
+
+// halaman rahasia
+exports.halamanrahasia=function(req,res){
+    response.ok("halaman sangat rahasiah",res)
 }
