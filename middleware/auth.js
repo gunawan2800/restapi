@@ -54,6 +54,7 @@ exports.login=function(req,res){
                     expiresIn:1440
                 })
                 var id_user=rows[0].id;
+                var username=rows[0].username;
                 var data={
                     id_user:id_user,
                     access_token:token,
@@ -68,7 +69,8 @@ exports.login=function(req,res){
                             success:true,
                             message:'BERHASIL  token jwt tergenarate',
                             token:token,
-                            currUser:data.id_user
+                            currUser:data.id_user,
+                            user:username
                         })
                         }
                     }
